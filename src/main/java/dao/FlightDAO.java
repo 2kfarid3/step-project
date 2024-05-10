@@ -10,5 +10,5 @@ public interface FlightDAO {
 
     void removeFlight(Flight flight);
 
-    void addFlight(Flight flight);
+    void saveFlight(Flight flight);
 }
