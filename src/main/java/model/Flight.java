@@ -7,9 +7,9 @@ public class Flight {
     private static int  ID = 100000;
     private final int id;
 
-    private final String origin;
-    private final String destination;
-    private final LocalDateTime departureTime;
+    private String origin;
+    private String destination;
+    private LocalDateTime departureTime;
     private int availableSeats;
 
 
@@ -20,6 +20,10 @@ public class Flight {
         this.departureTime = dateTime;
         this.availableSeats = availableSeats;
 
+    }
+
+    public Flight() {
+        this.id = ++ID;
     }
 
     public int getId() {

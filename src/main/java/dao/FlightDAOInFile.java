@@ -4,12 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Flight;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FlightDAOInFile implements FlightDAO{
 
@@ -21,81 +24,56 @@ public class FlightDAOInFile implements FlightDAO{
 
     private final ObjectMapper objectMapper;
 
+
+
     public FlightDAOInFile(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
-
     @Override
-    public void saveFlight(Flight flight) {
-
-
-        File file = new File(DATABASE);
-
-//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file));) {
-//            Files.write(path, objectMapper.writeValueAsBytes(flight));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));) {
-            bw.write(flight.toString() + "\n");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Flight getFlightByID(int id) {
+    public Flight getFlightById(int id) {
         return getAllFlights().stream().filter(x->x.getId() == id).collect(Collectors.toList()).get(0);
     }
-
     @Override
-    public List<Flight> getAllFlights() {
-        List<Flight> flights = new ArrayList<>();
+    public void deleteFlight(Flight flight) {
+        getAllFlights().remove(flight);
+    }
+    public void saveFlight(Flight flight) {
+        File file = new File(DATABASE);
 
-
-        try (BufferedReader br = new BufferedReader(new FileReader(DATABASE));){
-            String str = "";
-
-            while((str = br.readLine()) != null){
-                String [] parts;
-                parts = str.split(",");
-
-
-                int id = Integer.parseInt(parts[0].substring(parts[0].indexOf("=") + 1).trim());
-                String origin = parts[1].substring(parts[1].indexOf("=") + 1).trim();
-                String destination = parts[2].substring(parts[2].indexOf("=") + 1).trim();
-                LocalDateTime dateTime = LocalDateTime.parse(parts[3].substring(parts[3].indexOf("=") + 1).trim());
-                int availableSeats = Integer.parseInt(parts[4].substring(parts[4].indexOf("=") + 1, parts[4].length() - 1).trim());
-
-                flights.add(new Flight(origin, destination, dateTime, availableSeats));
-            }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write(objectMapper.writeValueAsString(flight));
+            bw.newLine(); // Add a newline after each flight to separate them
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-//        try {
-//            byte[] jsonData = Files.readAllBytes(path);
-//            Flight flight = objectMapper.readValue(jsonData, Flight.class);
-//            flights.add(flight);
-//        } catch (IOException e) {
-//            System.err.println("Error reading bookings from file");
-//            e.printStackTrace();
-//        }
-
-        return flights;
-
-
-
-
     }
-
     @Override
-    public void removeFlight(Flight flight) {
+    public Collection<Flight> getAllFlights() {
+        List<Flight> flights = new ArrayList<>();
+        try (Stream<String> lines = Files.lines(path)) {
+            lines.forEach(line -> {
+                try {
+                    Flight flight = objectMapper.readValue(line, Flight.class);
+                    flights.add(flight);
+                } catch (IOException e) {
+                    System.err.println("Error reading flight from file: " + line);
+                    e.printStackTrace();
+                }
+            });
+        } catch (IOException e) {
+            System.err.println("Error reading flights from file");
+            e.printStackTrace();
+        }
+        return flights;
+    }
+    @Override
+    public boolean existById(Flight flight) {
+        for(Flight f:getAllFlights()){
+            if(f.getId() == flight.getId()){
+                return true;
+            }
+        }
 
+        return false;
     }
 }
