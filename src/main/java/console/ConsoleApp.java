@@ -1,11 +1,20 @@
 package console;
 
+import controller.BookingController;
+import controller.FlightController;
+import dto.BookingDTO;
+import dto.FlightDTO;
+import model.Booking;
+
+import java.util.Collection;
+import java.util.Scanner;
+
 public class ConsoleApp {
-    private FlightsController flightsController;
+    private FlightController flightsController;
 
     private BookingController bookingController;
 
-    public ConsoleApp(FlightsController flightsController, BookingController bookingController) {
+    public ConsoleApp(FlightController flightsController, BookingController bookingController) {
         this.flightsController = flightsController;
         this.bookingController = bookingController;
     }
@@ -52,7 +61,7 @@ public class ConsoleApp {
                 break;
             case 3:
                 // Implement Search and book a flight functionality
-                BookingDTO bookingDTO = bookingController.bookReservation(flightsController.searchFlight());
+                BookingDTO bookingDTO = bookingController.bookReservation(flightsController.searchFlight().getId());
                 System.out.println();
                 break;
             case 4:
