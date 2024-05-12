@@ -19,6 +19,12 @@
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>2.11.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.13.1</version> <!-- Make sure to use the appropriate version -->
+        </dependency>
+
     </dependencies>
 
 </project>
