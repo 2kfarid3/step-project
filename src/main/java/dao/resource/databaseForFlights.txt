@@ -1,0 +1,17 @@
+{"id":100001,"origin":"Kiev","destination":"Baku","departureTime":[2024,5,11,15,30],"availableSeats":100}
+{"id":100002,"origin":"Kiev","destination":"Istanbul","departureTime":[2024,5,12,12,30],"availableSeats":100}
+{"id":100003,"origin":"Kiev","destination":"Rome","departureTime":[2024,5,13,16,30],"availableSeats":100}
+{"id":100004,"origin":"Kiev","destination":"Ganja","departureTime":[2024,5,14,11,30],"availableSeats":100}
+{"id":100005,"origin":"Kiev","destination":"Milan","departureTime":[2024,5,11,5,30],"availableSeats":100}
+{"id":100006,"origin":"Kiev","destination":"Moscow","departureTime":[2022,2,22,3,0],"availableSeats":100}
+{"id":100007,"origin":"Kiev","destination":"Paris","departureTime":[2024,5,15,4,30],"availableSeats":100}
+{"id":100008,"origin":"Kiev","destination":"Madrid","departureTime":[2024,5,12,23,30],"availableSeats":100}
+{"id":100009,"origin":"Kiev","destination":"Berlin","departureTime":[2024,5,11,17,30],"availableSeats":100}
+{"id":100010,"origin":"Kiev","destination":"Barcelona","departureTime":[2024,5,11,5,30],"availableSeats":100}
+{"id":100011,"origin":"Kiev","destination":"London","departureTime":[2024,5,12,5,30],"availableSeats":100}
+{"id":100012,"origin":"Kiev","destination":"Manchester","departureTime":[2024,5,17,18,30],"availableSeats":100}
+{"id":100013,"origin":"Kiev","destination":"Ankara","departureTime":[2024,5,11,20,30],"availableSeats":100}
+{"id":100014,"origin":"Kiev","destination":"Belgrade","departureTime":[2024,5,18,1,30],"availableSeats":100}
+{"id":100015,"origin":"Kiev","destination":"New-York","departureTime":[2024,5,11,9,30],"availableSeats":100}
+{"id":100016,"origin":"Kiev","destination":"Los Angelos","departureTime":[2024,5,12,21,0],"availableSeats":100}
+
