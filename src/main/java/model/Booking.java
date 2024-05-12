@@ -12,27 +12,19 @@ public class Booking {
 
     private int flightID;
 
-    private String origin;
-
-    private String destination;
-
     private List<User> passengers = new ArrayList<>();
 
     private BookingType bookingType;
 
-    public Booking(int flightID, String origin, String destination, List<User> passengers, BookingType bookingType) {
+    public Booking(int flightID, List<User> passengers, BookingType bookingType) {
         this.bookingID = ++ID;
         this.flightID = flightID;
-        this.origin = origin;
-        this.destination = destination;
         this.passengers = passengers;
         this.bookingType = bookingType;
     }
 
-    public Booking(int flightID, String origin, String destination) {
+    public Booking(int flightID) {
         this.flightID = flightID;
-        this.origin = origin;
-        this.destination = destination;
         this.bookingType = BookingType.PENDING;
         bookingID = ++ID;
     }
@@ -51,22 +43,6 @@ public class Booking {
 
     public int getBookingID() {
         return bookingID;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public List<User> getPassengers() {
@@ -90,8 +66,6 @@ public class Booking {
         return "{" +
                 "bookingID=" + bookingID +
                 " , flightID=" + flightID +
-                " , origin='" + origin + '\'' +
-                " , destination='" + destination + '\'' +
                 " , passengers=" + passengers +
                 " , bookingType=" + bookingType +
                 '}';

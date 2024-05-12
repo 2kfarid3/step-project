@@ -2,7 +2,6 @@ package controller;
 
 import model.Booking;
 import dto.BookingDTO;
-import model.FlightDTO;
 import service.BookingService;
 
 import java.util.Collection;
@@ -15,8 +14,8 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    public BookingDTO bookReservation(FlightDTO flightDTO){
-        return bookingService.bookReservation(flightDTO);
+    public BookingDTO bookReservation(int flightID){
+        return bookingService.bookReservation(flightID);
     }
 
     public Collection<Booking> cancelTheBooking() {

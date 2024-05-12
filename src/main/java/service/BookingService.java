@@ -5,7 +5,6 @@ import dao.User;
 import model.Booking;
 import dto.BookingDTO;
 import model.BookingType;
-import model.FlightDTO;
 import service.exceptions.BookingNotFoundException;
 import service.exceptions.DuplicateBookingEntryException;
 
@@ -20,8 +19,8 @@ public class BookingService {
         this.bookingDAO = bookingDAO;
     }
 
-    public BookingDTO bookReservation(FlightDTO flightDTO){
-        Booking booking = new Booking(flightDTO.getId(), flightDTO.getOrigin(), flightDTO.getDestination());
+    public BookingDTO bookReservation(int flightID){
+        Booking booking = new Booking(flightID);
 
         System.out.println("Please enter number of the passengers:");
 
@@ -48,7 +47,7 @@ public class BookingService {
 
         bookingDAO.saveBooking(booking);
 
-        return new BookingDTO(booking.getFlightID(), booking.getOrigin(),booking.getDestination(), booking.getPassengers(), booking.getBookingType());
+        return new BookingDTO(booking.getFlightID(), booking.getPassengers(), booking.getBookingType());
 
     }
     public Collection<Booking> cancelTheBooking(){
