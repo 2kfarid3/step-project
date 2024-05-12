@@ -3,7 +3,7 @@ package service;
 import dao.BookingDAO;
 import dao.User;
 import model.Booking;
-import model.BookingDTO;
+import dto.BookingDTO;
 import model.BookingType;
 import model.FlightDTO;
 import service.exceptions.BookingNotFoundException;

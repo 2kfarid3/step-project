@@ -1,6 +1,7 @@
-package model;
+package dto;
 
 import dao.User;
+import model.BookingType;
 
 import java.util.ArrayList;
 import java.util.List;

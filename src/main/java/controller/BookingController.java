@@ -1,11 +1,10 @@
 package controller;
 
 import model.Booking;
-import model.BookingDTO;
+import dto.BookingDTO;
 import model.FlightDTO;
 import service.BookingService;
 
-import java.io.IOException;
 import java.util.Collection;
 
 public class BookingController {
