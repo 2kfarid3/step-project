@@ -12,27 +12,19 @@ public class BookingDTO {
 
     private int flightID;
 
-    private String origin;
-
-    private String destination;
-
     private List<User> passengers = new ArrayList<>();
 
     private BookingType bookingType;
 
-    public BookingDTO(int flightID, String origin, String destination, List<User> passengers, BookingType bookingType) {
+    public BookingDTO(int flightID, List<User> passengers, BookingType bookingType) {
         this.bookingID = ++ID;
         this.flightID = flightID;
-        this.origin = origin;
-        this.destination = destination;
         this.passengers = passengers;
         this.bookingType = bookingType;
     }
 
-    public BookingDTO(int flightID, String origin, String destination) {
+    public BookingDTO(int flightID) {
         this.flightID = flightID;
-        this.origin = origin;
-        this.destination = destination;
         this.bookingType = BookingType.PENDING;
         bookingID = ++ID;
     }
@@ -53,21 +45,6 @@ public class BookingDTO {
         return bookingID;
     }
 
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
 
     public List<User> getPassengers() {
         return passengers;
@@ -90,8 +67,6 @@ public class BookingDTO {
         return "{" +
                 "bookingID=" + bookingID +
                 " , flightID=" + flightID +
-                " , origin='" + origin + '\'' +
-                " , destination='" + destination + '\'' +
                 " , passengers=" + passengers +
                 " , bookingType=" + bookingType +
                 '}';
