@@ -21,7 +21,6 @@ public class App {
         BookingController bookingController = new BookingController(bookingService);
 
         ConsoleApp consoleApp = new ConsoleApp(flightController, bookingController);
-
         consoleApp.start();
     }
 }
